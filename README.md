@@ -59,3 +59,30 @@ It is possible to give any name or definitions and start activities. If it needs
 
 > [!NOTE]  
 > Here it has provided a sample code which is used to connect and read data from event hub.
+
+```csharp
+using (var createClientAct = OtelTelemetry.OtelTelemetrySource.StartActivity("Create EventHub Consumer Client"))
+{
+    consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+    consumer = new EventHubConsumerClient(consumerGroup, _connectionString, _eventHubName);
+}
+
+using var cancellationSource = new CancellationTokenSource();
+
+var partitionProps = await consumer.GetPartitionPropertiesAsync(_eventHubPartition);
+if (partitionProps.IsEmpty == true)
+{
+    return new OTelEventData();
+}
+
+var startingPosition = EventPosition.Latest;
+
+var receiverOptions = new PartitionReceiverOptions() { OwnerLevel = 0 }; // This is to forcibly own the connection
+
+using (var receiveClientAct = OtelTelemetry.OtelTelemetrySource.StartActivity("Receive with EventHub Consumer Client"))
+{
+    _receiver = new PartitionReceiver(consumerGroup, _eventHubPartition, startingPosition, _connectionString, _eventHubName, receiverOptions);
+
+    eventBatch = await _receiver.ReceiveBatchAsync(batchSize, waitTime, cancellationSource.Token);
+}
+```
