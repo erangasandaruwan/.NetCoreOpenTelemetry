@@ -10,9 +10,10 @@ It is possible to configure and start tracing with either Console applications a
 
 For this, it requires to install the below nuget packages.
 ## Info panel
-dotnet add package OpenTelemetry
-dotnet add package OpenTelemetry.Extensions.Hosting
-dotnet add package OpenTelemetry.Exporter.Console
+| dotnet add package OpenTelemetry                    |                  
+| dotnet add package OpenTelemetry.Extensions.Hosting |
+| dotnet add package OpenTelemetry.Exporter.Console   |
+|:----------------------------------------------------|
 
 ```csharp
 
