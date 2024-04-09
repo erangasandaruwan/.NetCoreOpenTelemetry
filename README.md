@@ -9,16 +9,6 @@ OpenTelemetry is not an observability backend or telemetry collector like **Jaeg
 It is possible to configure and start tracing with either Console applications as well as ASP.NET Core-based applications. Here we can see how we can do the needful to setup and start tracing with .Net Core Web API solutions. The target .Net Core version is 8.0.
 
 For this, it requires to install the below nuget packages. Here its with Package Manager.
-
-| Install-Package OpenTelemetry                    |  
-|:----------------------------------------------------|
-
-| Install-Package OpenTelemetry.Extensions.Hosting |
-|:----------------------------------------------------|
-
-| Install-Package OpenTelemetry.Exporter.Console   |
-|:----------------------------------------------------|
-
 ```html
 Install-Package OpenTelemetry
 Install-Package OpenTelemetry.Extensions.Hosting
@@ -44,4 +34,16 @@ builder.Services.AddOpenTelemetry()
                            .AddAspNetCoreInstrumentation()
                            .AddConsoleExporter();
                    });
+```
+
+### Setting up an ActivitySource
+
+Once tracing is configured and initialized, it is possible to configure an ActivitySource, which will be how it traces operations with Activity elements.
+An **ActivitySource** is instantiated once per application/service that is being instrumented, so it’s a good idea to instantiate it once in a shared location. It is also typically named the same as the Service Name.
+
+```csharp
+public static class OtelTelemetry
+{
+    public static readonly ActivitySource OtelTelemetrySource = new("SampleService");
+}
 ```
