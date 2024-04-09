@@ -55,7 +55,7 @@ public static class OtelTelemetry
 
 ### Creating Activities and Nested Activities
 
-It is possible to give any name or definitions and start activities. If it needs to track any sub-operation, it is also possible to have the traces in hierarchical way. 
+It is possible to give any name or definitions and start activities. If it needs to track any sub-operation, it is also possible to have the traces in hierarchical way else possible to create independent traces as well. 
 
 > [!NOTE]  
 > Here it has provided a sample code which is used to connect and read data from event hub.
@@ -81,8 +81,22 @@ var receiverOptions = new PartitionReceiverOptions() { OwnerLevel = 0 }; // This
 
 using (var receiveClientAct = OtelTelemetry.OtelTelemetrySource.StartActivity("Receive with EventHub Consumer Client"))
 {
-    _receiver = new PartitionReceiver(consumerGroup, _eventHubPartition, startingPosition, _connectionString, _eventHubName, receiverOptions);
+    _receiver = new PartitionReceiver(consumerGroup, _eventHubPartition, startingPosition,
+                                            _connectionString, _eventHubName, receiverOptions);
 
     eventBatch = await _receiver.ReceiveBatchAsync(batchSize, waitTime, cancellationSource.Token);
 }
+```
+
+### Get the current Activity & Add tags to an Activity
+
+It is possible to access current Activity and possible to enrich it with more information.
+
+```csharp
+var activity = Activity.Current;
+// may be null if there is none
+
+activity?.SetTag("operation.value", 1);
+activity?.SetTag("operation.name", "Receive");
+activity?.SetTag("operation.received-batch", eventBatch);
 ```
