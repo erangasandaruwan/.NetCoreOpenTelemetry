@@ -9,9 +9,12 @@ OpenTelemetry is not an observability backend or telemetry collector like **Jaeg
 It is possible to configure and start tracing with either Console applications as well as ASP.NET Core-based applications. Here we can see how we can do the needful to setup and start tracing with .Net Core Web API solutions. The target .Net Core version is 8.0.
 
 For this, it requires to install the below nuget packages.
-## Info panel
-| dotnet add package OpenTelemetry                    |                  
+| dotnet add package OpenTelemetry                    |  
+|:----------------------------------------------------|
+
 | dotnet add package OpenTelemetry.Extensions.Hosting |
+|:----------------------------------------------------|
+
 | dotnet add package OpenTelemetry.Exporter.Console   |
 |:----------------------------------------------------|
 
