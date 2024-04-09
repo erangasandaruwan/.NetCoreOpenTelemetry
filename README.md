@@ -13,7 +13,9 @@ builder.Services.AddOpenTelemetry()
                    .WithTracing(b =>
                    {
                        b.AddSource("SampleService")
-                           .ConfigureResource(resource => resource.AddService(serviceName: "SampleService", serviceVersion: "1.0.0.0"))
+                           .ConfigureResource(resource =>
+                              resource.AddService(serviceName: "SampleService",
+                                                  serviceVersion: "1.0.0.0"))
                            .AddAspNetCoreInstrumentation()
                            .AddConsoleExporter();
                    });
