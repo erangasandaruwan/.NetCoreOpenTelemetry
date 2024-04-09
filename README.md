@@ -100,3 +100,6 @@ activity?.SetTag("operation.value", 1);
 activity?.SetTag("operation.name", "Receive");
 activity?.SetTag("operation.received-batch", eventBatch);
 ```
+
+References 
+- https://opentelemetry.io/docs/languages/net/instrumentation/
