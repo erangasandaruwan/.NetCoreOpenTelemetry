@@ -52,3 +52,10 @@ public static class OtelTelemetry
     public static readonly ActivitySource OtelTelemetrySource = new("SampleService");
 }
 ```
+
+### Creating Activities and Nested Activities
+
+It is possible to give any name or definitions and start activities. If it needs to track any sub-operation, it is also possible to have the traces in hierarchical way. 
+
+> [!NOTE]  
+> Here it has provided a sample code which is used to connect and read data from event hub.
