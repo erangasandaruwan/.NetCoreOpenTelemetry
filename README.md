@@ -101,5 +101,12 @@ activity?.SetTag("operation.name", "Receive");
 activity?.SetTag("operation.received-batch", eventBatch);
 ```
 
+## Export Telemetry Data
+
+### Use Jaeger to collect telemetry
+
+### Use Zipkin to collect telemetry
+
+
 References 
 - https://opentelemetry.io/docs/languages/net/instrumentation/
