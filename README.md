@@ -7,6 +7,11 @@ OpenTelemetry is not an observability backend or telemetry collector like **Jaeg
 ### Configure OpenTelemetry with .Net
 
 ```csharp
+
+using OpenTelemetry;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
