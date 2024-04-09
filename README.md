@@ -19,11 +19,11 @@ For this, it requires to install the below nuget packages. Here its with Package
 | Install-Package OpenTelemetry.Exporter.Console   |
 |:----------------------------------------------------|
 
-> [!NOTE]
-> Install-Package OpenTelemetry
-> Install-Package OpenTelemetry.Extensions.Hosting
-> Install-Package OpenTelemetry.Exporter.Console
-
+```html
+Install-Package OpenTelemetry
+Install-Package OpenTelemetry.Extensions.Hosting
+Install-Package OpenTelemetry.Exporter.Console
+```
 
 
 ```csharp
