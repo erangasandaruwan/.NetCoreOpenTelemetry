@@ -19,9 +19,10 @@ For this, it requires to install the below nuget packages. Here its with Package
 | Install-Package OpenTelemetry.Exporter.Console   |
 |:----------------------------------------------------|
 
-<!--
-Lorem ipsum dolor sit amet
--->
+> [!NOTE]
+> Install-Package OpenTelemetry
+> Install-Package OpenTelemetry.Extensions.Hosting
+> Install-Package OpenTelemetry.Exporter.Console
 
 
 
