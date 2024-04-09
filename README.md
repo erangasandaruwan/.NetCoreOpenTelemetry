@@ -39,9 +39,14 @@ builder.Services.AddOpenTelemetry()
 ### Setting up an ActivitySource
 
 Once tracing is configured and initialized, it is possible to configure an ActivitySource, which will be how it traces operations with Activity elements.
-An **ActivitySource** is instantiated once per application/service that is being instrumented, so it’s a good idea to instantiate it once in a shared location. It is also typically named the same as the Service Name.
+An **ActivitySource** is instantiated once per application/service that is being instrumented, so it’s a good idea to instantiate it once in a shared location. It is also typically named the same as the Service Name (Here it has used **SampleService**).
+
+| :memo:        | It is recomonded to instantiate ActivitySource as an static reference   |
+|---------------|:---------------------------------------------|
 
 ```csharp
+using System.Diagnostics;
+
 public static class OtelTelemetry
 {
     public static readonly ActivitySource OtelTelemetrySource = new("SampleService");
