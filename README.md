@@ -129,6 +129,7 @@ docker run --name jaeger -p 13133:13133 -p 16686:16686 -p 4317:4317 -d --restart
 
 
 Configure .Net Core application to export OpenTelemetry to jeagger.
+
 ```csharp
 services.AddOpenTelemetry()
        .WithTracing(b =>
@@ -143,9 +144,10 @@ services.AddOpenTelemetry()
 
 
 After invoking an API with the activities defined as in previous example, the traces will appear like this in the jaeger dashboard.
+
 <img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/b465c0db-e885-44ca-879b-042495f1ae4e"  width="100%" height="50%">
 
-
+<img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/f3b23ee6-2637-42c8-9df2-ada2e5c487f0"  width="100%" height="50%">
 
 ### Use Zipkin to collect telemetry
 
