@@ -155,9 +155,16 @@ After invoking an API with the activities defined as in previous example, the tr
 
 Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. Features include both the collection and lookup of this data.
 
+Let's try to install jaeger locally using docker desktop. 
+
 ```docker
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 ```
+
+<img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/0fd34e11-88b3-4ea6-aa28-a6cc88ddf266"  width="80%" height="40%">
+
+
+
 
 References 
 - https://opentelemetry.io/docs/languages/net/instrumentation/
