@@ -122,8 +122,9 @@ docker run --name jaeger -p 13133:13133 -p 16686:16686 -p 4317:4317 -d --restart
 <img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/1c65cbd0-1fdc-49af-917d-5592d014e0ba"  width="80%" height="40%">
 
 > [!NOTE]  
-> It is required to llocate at least 4GB of memory to Docker. Jaeger components, especially when running the full stack, can be memory-intensive. Further, that the necessary ports must kept open. Jaeger by default uses ports such as **6831/udp** for agent communication, **16686** for the web UI, and **14268** for collectors.
+> It is required to llocate at least 4GB of memory to Docker. Jaeger components, especially when running the full stack, can be memory-intensive. Further, that the necessary ports must kept open. Jaeger by default uses ports such as **6831/udp** for agent communication, **16686** for the web UI, and **14268** for collectors. Further 4317 can be used to send the telemetry data.
 
+<img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/a5c49e1b-d48d-4c46-8a6c-d2ad1c102baa"  width="80%" height="40%">
 
 ### Use Zipkin to collect telemetry
 
