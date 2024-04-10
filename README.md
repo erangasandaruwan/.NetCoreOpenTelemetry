@@ -101,7 +101,9 @@ activity?.SetTag("operation.name", "Receive");
 activity?.SetTag("operation.received-batch", eventBatch);
 ```
 
-## Export Telemetry Data
+## Export Telemetry Data and Distributed Tracing
+
+OpenTelemetry focuses on collecting data at the application level where as distributed tracing provides more complete and comprehensive visibility into the inner workings of the whole system including multiple software components, middlesweres or inter-connected services and allows data to be broken down and sifted for useful information at a much more granular level.
 
 ### Use Jaeger to collect telemetry
 
@@ -111,9 +113,17 @@ As per the Jaeger documentation, it is a distributed tracing platform released a
 - Track down root causes
 - Analyze service dependencies
 
+Let's try to install jaeger locally using docker desktop.
+
+```docker
+docker run --name jaeger -p 13133:13133 -p 16686:16686 -p 4317:4317 -d --restart=unless-stopped jaegertracing/opentelemetry-all-in-one
+```
+
 ### Use Zipkin to collect telemetry
 
 
 References 
 - https://opentelemetry.io/docs/languages/net/instrumentation/
+- https://www.jaegertracing.io/
 - https://www.uber.com/en-SG/blog/distributed-tracing/
+- https://zipkin.io/
