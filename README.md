@@ -105,7 +105,7 @@ activity?.SetTag("operation.received-batch", eventBatch);
 
 OpenTelemetry focuses on collecting data at the application level where as distributed tracing provides more complete and comprehensive visibility into the inner workings of the whole system including multiple software components, middlewares or inter-connected services and allows data to be broken down and sifted for useful information at a much more granular level.
 
-### Use Jaeger to collect telemetry
+## Use Jaeger to collect telemetry
 
 As per the Jaeger documentation, it is a distributed tracing platform released as open source by [Uber Technologies](https://uber.github.io/#/)  . With Jaeger it is possible to,
 - Monitor and troubleshoot distributed workflows
@@ -151,8 +151,13 @@ After invoking an API with the activities defined as in previous example, the tr
 
 <img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/f3b23ee6-2637-42c8-9df2-ada2e5c487f0"  width="100%" height="40%">
 
-### Use Zipkin to collect telemetry
+## Use Zipkin to collect telemetry
 
+Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. Features include both the collection and lookup of this data.
+
+```docker
+docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
+```
 
 References 
 - https://opentelemetry.io/docs/languages/net/instrumentation/
