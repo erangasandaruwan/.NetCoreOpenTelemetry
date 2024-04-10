@@ -103,7 +103,7 @@ activity?.SetTag("operation.received-batch", eventBatch);
 
 ## Export Telemetry Data and Distributed Tracing
 
-OpenTelemetry focuses on collecting data at the application level where as distributed tracing provides more complete and comprehensive visibility into the inner workings of the whole system including multiple software components, middlesweres or inter-connected services and allows data to be broken down and sifted for useful information at a much more granular level.
+OpenTelemetry focuses on collecting data at the application level where as distributed tracing provides more complete and comprehensive visibility into the inner workings of the whole system including multiple software components, middlewares or inter-connected services and allows data to be broken down and sifted for useful information at a much more granular level.
 
 ### Use Jaeger to collect telemetry
 
@@ -113,11 +113,13 @@ As per the Jaeger documentation, it is a distributed tracing platform released a
 - Track down root causes
 - Analyze service dependencies
 
-Let's try to install jaeger locally using docker desktop.
+Let's try to install jaeger locally using docker desktop. To set up Jaeger as a service on Windows, ensure you have Docker installed on your Windows machine as Jaeger will be running in a Docker container for ease of use and management.
 
 ```docker
 docker run --name jaeger -p 13133:13133 -p 16686:16686 -p 4317:4317 -d --restart=unless-stopped jaegertracing/opentelemetry-all-in-one
 ```
+![image](https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/1c65cbd0-1fdc-49af-917d-5592d014e0ba)
+
 
 ### Use Zipkin to collect telemetry
 
