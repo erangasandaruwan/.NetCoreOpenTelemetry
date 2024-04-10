@@ -1,0 +1,6 @@
+@OTel.Jaeger.Rest_HostAddress = http://localhost:5101
+
+GET {{OTel.Jaeger.Rest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
