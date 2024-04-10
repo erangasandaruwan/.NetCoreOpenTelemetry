@@ -163,6 +163,8 @@ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 
 <img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/0fd34e11-88b3-4ea6-aa28-a6cc88ddf266"  width="80%" height="40%">
 
+And here we go.
+![image](https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/00d436b8-91d4-41ec-94ee-011234cc3b3d)
 
 
 
