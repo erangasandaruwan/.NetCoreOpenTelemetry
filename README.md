@@ -166,6 +166,24 @@ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 And here we go.
 ![image](https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/00d436b8-91d4-41ec-94ee-011234cc3b3d)
 
+Configure .Net Core application to export OpenTelemetry to Zipkin.
+
+```csharp
+services.AddOpenTelemetry()
+       .WithTracing(b =>
+       {
+           b.AddSource("OTel.Jaeger.Rest")
+             .ConfigureResource(resource => resource.AddService(serviceName: "OTel.Jaeger.Rest", serviceVersion: "1.0.0.0"))
+             .AddAspNetCoreInstrumentation()
+             .AddConsoleExporter()
+             .AddZipkinExporter(o => o.HttpClientFactory = () =>
+             {
+                 HttpClient client = new HttpClient();
+                 client.BaseAddress = new Uri("http://localhost:9411/zipkin/");
+                 return client;
+             });
+        });
+```
 
 
 References 
