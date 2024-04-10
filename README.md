@@ -105,8 +105,15 @@ activity?.SetTag("operation.received-batch", eventBatch);
 
 ### Use Jaeger to collect telemetry
 
+As per the Jaeger documentation, it is a distributed tracing platform released as open source by [Uber Technologies](https://uber.github.io/#/)  . With Jaeger it is possible to,
+- Monitor and troubleshoot distributed workflows
+- Identify performance bottlenecks
+- Track down root causes
+- Analyze service dependencies
+
 ### Use Zipkin to collect telemetry
 
 
 References 
 - https://opentelemetry.io/docs/languages/net/instrumentation/
+- https://www.uber.com/en-SG/blog/distributed-tracing/
