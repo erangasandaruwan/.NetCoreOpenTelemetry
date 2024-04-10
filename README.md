@@ -186,6 +186,10 @@ services.AddOpenTelemetry()
         });
 ```
 
+After invoking an API, the traces will appear like this in the jaeger dashboard.
+
+![image](https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/a1717a3b-7798-40bc-a90f-1d9dd0969ee9)
+
 
 References 
 - https://opentelemetry.io/docs/languages/net/instrumentation/
