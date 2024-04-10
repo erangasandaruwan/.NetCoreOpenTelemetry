@@ -27,9 +27,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenTelemetry()
                    .WithTracing(b =>
                    {
-                       b.AddSource("SampleService")
+                       b.AddSource("OTel.Jaeger.Rest")
                            .ConfigureResource(resource =>
-                              resource.AddService(serviceName: "SampleService",
+                              resource.AddService(serviceName: "OTel.Jaeger.Rest",
                                                   serviceVersion: "1.0.0.0"))
                            .AddAspNetCoreInstrumentation()
                            .AddConsoleExporter();
@@ -39,7 +39,7 @@ builder.Services.AddOpenTelemetry()
 ### Setting up an ActivitySource
 
 Once tracing is configured and initialized, it is possible to configure an ActivitySource, which will be how it traces operations with Activity elements.
-An **ActivitySource** is instantiated once per application/service that is being instrumented, so it’s a good idea to instantiate it once in a shared location. It is also typically named the same as the Service Name (Here it has used **SampleService**).
+An **ActivitySource** is instantiated once per application/service that is being instrumented, so it’s a good idea to instantiate it once in a shared location. It is also typically named the same as the Service Name (Here it has used **OTel.Jaeger.Rest**).
 
 | :memo:        | It is recomonded to instantiate ActivitySource as an static reference   |
 |---------------|:---------------------------------------------|
@@ -49,7 +49,7 @@ using System.Diagnostics;
 
 public static class OtelTelemetry
 {
-    public static readonly ActivitySource OtelTelemetrySource = new("SampleService");
+    public static readonly ActivitySource OtelTelemetrySource = new("OTel.Jaeger.Rest");
 }
 ```
 
@@ -113,6 +113,7 @@ As per the Jaeger documentation, it is a distributed tracing platform released a
 - Track down root causes
 - Analyze service dependencies
 
+
 Let's try to install jaeger locally using docker desktop. To set up Jaeger as a service on Windows, ensure you have Docker installed on your Windows machine as Jaeger will be running in a Docker container for ease of use and management.
 
 ```docker
@@ -124,7 +125,27 @@ docker run --name jaeger -p 13133:13133 -p 16686:16686 -p 4317:4317 -d --restart
 > [!NOTE]  
 > It is required to llocate at least 4GB of memory to Docker. Jaeger components, especially when running the full stack, can be memory-intensive. Further, that the necessary ports must kept open. Jaeger by default uses ports such as **6831/udp** for agent communication, **16686** for the web UI, and **14268** for collectors. Further 4317 can be used to send the telemetry data.
 
-<img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/a5c49e1b-d48d-4c46-8a6c-d2ad1c102baa"  width="80%" height="40%">
+<img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/a5c49e1b-d48d-4c46-8a6c-d2ad1c102baa"  width="100%" height="50%">
+
+
+Configure .Net Core application to export OpenTelemetry to jeagger.
+```csharp
+services.AddOpenTelemetry()
+       .WithTracing(b =>
+       {
+           b.AddSource("OTel.Jaeger.Rest")
+             .ConfigureResource(resource => resource.AddService(serviceName: "OTel.Jaeger.Rest", serviceVersion: "1.0.0.0"))
+             .AddAspNetCoreInstrumentation()
+             .AddConsoleExporter()
+             .AddOtlpExporter(e => { e.Endpoint = new Uri("http://localhost:4317"); });
+       });
+```
+
+
+After invoking an API with the activities defined as in previous example, the traces will appear like this in the jaeger dashboard.
+<img src="https://github.com/erangasandaruwan/.NetCoreOpenTelemetry/assets/25504137/b465c0db-e885-44ca-879b-042495f1ae4e"  width="100%" height="50%">
+
+
 
 ### Use Zipkin to collect telemetry
 
